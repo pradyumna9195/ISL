@@ -65,6 +65,19 @@ The model can recognize the following signs:
 - operation
 - pain
 
+## Deployment
+
+### Deploying to Render
+
+For detailed deployment instructions, see the [DEPLOYMENT.md](../DEPLOYMENT.md) file in the root directory.
+
+Quick steps:
+1. Push your code to GitHub
+2. Connect your repository to Render
+3. Configure the web service with:
+   - Build Command: `chmod +x setup.sh && ./setup.sh && pip install -r requirements.txt`
+   - Start Command: `cd app && gunicorn app:app`
+
 ## License
 
 This project is licensed under the MIT License. 

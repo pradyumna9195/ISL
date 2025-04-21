@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: isl-sign-language-recognition
+    env: python
+    buildCommand: "chmod +x setup.sh && ./setup.sh && pip install -r requirements.txt"
+    startCommand: "gunicorn app:app --chdir app"
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0 

@@ -1,16 +1,33 @@
-# Python
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-*.class
-*.so
-.Python
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Virtual environments
+venv/
+env/
+ENV/
+
 # Jupyter Notebook
 .ipynb_checkpoints
-# Mac
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# macOS
 .DS_Store
-# Virtual Environment
-.conda/
-# Training data
-MP_Data/
+
+# Local development configuration
+.env
+.env.local
+
 # Logs
-Logs/
+*.log

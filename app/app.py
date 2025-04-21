@@ -8,7 +8,12 @@ from flask import Flask, render_template, Response, jsonify
 app = Flask(__name__)
 
 # Load the model
-model = tf.keras.models.load_model('../action_best.h5')
+# Check if model exists in current directory first, then try parent directory
+model_path = 'action_best.h5'
+if not os.path.exists(model_path):
+    model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'action_best.h5')
+
+model = tf.keras.models.load_model(model_path)
 
 # Actions/signs that the model can recognize
 actions = np.array(['cold', 'fever', 'cough', 'medication', 'injection', 'operation', 'pain'])
@@ -181,4 +186,5 @@ def video_feed():
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5002, debug=True) 
+    port = int(os.environ.get('PORT', 5002))
+    app.run(host='0.0.0.0', port=port, debug=False) 
