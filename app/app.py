@@ -13,7 +13,13 @@ model_path = 'action_best.h5'
 if not os.path.exists(model_path):
     model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'action_best.h5')
 
-model = tf.keras.models.load_model(model_path)
+# Add compatibility for newer TensorFlow versions
+try:
+    model = tf.keras.models.load_model(model_path, compile=False)
+except Exception as e:
+    print(f"Error loading model: {e}")
+    # Try with different compile option
+    model = tf.keras.models.load_model(model_path, compile=True)
 
 # Actions/signs that the model can recognize
 actions = np.array(['cold', 'fever', 'cough', 'medication', 'injection', 'operation', 'pain'])
