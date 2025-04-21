@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+*.class
+*.so
+.Python
+# Jupyter Notebook
+.ipynb_checkpoints
+# Mac
+.DS_Store
+# Virtual Environment
+.conda/
+# Training data
+MP_Data/
+# Logs
+Logs/
